@@ -9,6 +9,7 @@ public class Pessoa {
     private LocalDate dataNascimento;
     private String nome;
     private String sobrenome;
+    private String endereco;
 
     List<String> colecao = new ArrayList<>();
 
