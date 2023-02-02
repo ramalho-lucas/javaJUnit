@@ -12,6 +12,8 @@ public class Pessoa {
 
     List<String> colecao = new ArrayList<>();
 
+    static List<String> colecaoEstatica = new ArrayList<>();
+
     public Pessoa(String nome, String sobrenome) {
         this.nome = nome;
         this.sobrenome = sobrenome;
@@ -27,17 +29,19 @@ public class Pessoa {
         }
     }
 
+    public void adicionarNomesEmColecaoEstatica(Pessoa pessoa){
+        int nomeTamanho = pessoa.getNome().length();
+        int idade = pessoa.converterIdade();
+
+        if(nomeTamanho >= 5 && idade >= 18){
+            colecaoEstatica.add(pessoa.getNome());
+            System.out.println(colecaoEstatica);
+        }
+    }
+
     public int converterIdade(){
         int idade = Period.between(this.dataNascimento,LocalDate.now()).getYears();
         return idade;
-    }
-
-    public LocalDate getDataNascimento() {
-        return dataNascimento;
-    }
-
-    public void setDataNascimento(LocalDate dataNascimento) {
-        this.dataNascimento = dataNascimento;
     }
 
     public String getNome() {
@@ -56,11 +60,28 @@ public class Pessoa {
         this.sobrenome = sobrenome;
     }
 
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
     public List<String> getColecao() {
         return colecao;
     }
 
     public void setColecao(List<String> colecao) {
         this.colecao = colecao;
+    }
+
+    @Override
+    public String toString() {
+        return "Pessoa{" +
+                "dataNascimento=" + dataNascimento +
+                ", nome='" + nome + '\'' +
+                ", sobrenome='" + sobrenome + '\'' +
+                '}';
     }
 }
